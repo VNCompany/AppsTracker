@@ -1,13 +1,18 @@
+using DataLayer;
+
 var appBuilder = WebApplication.CreateBuilder(args);
+appBuilder.Configuration.AddJsonFile("./dbsettings.json");
 appBuilder.Services.AddControllersWithViews();
 
 var app = appBuilder.Build();
+app.UseStaticFiles();
+app.UseRouting();
+app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
-app.MapGet(pattern: "/", (context) =>
-{
-    context.Response.StatusCode = 404;
-    context.Response.Headers.ContentType = "text/html; charset=utf-8";
-    return context.Response.WriteAsync("<h1>Yep</h1>");
-});
+Database.Configure(
+    host: app.Configuration["postgresql:host"],
+    user: app.Configuration["postgresql:user"],
+    password: app.Configuration["postgresql:password"],
+    dbname: app.Configuration["postgresql:dbname"]);
 
 app.Run();
