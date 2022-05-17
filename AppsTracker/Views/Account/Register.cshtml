@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<h1>Регистрация</h1>
+<form method="post">
+    <label><input type="text" class="auth-input" placeholder="Email" name="email" required></label>
+    <label><input type="password" class="auth-input" placeholder="Пароль" name="password" required></label>
+    <label><input type="password" class="auth-input" placeholder="Повтор пароля" name="repeat" required></label>
+    <button class="auth-button">Зарегистрироваться</button>
+</form>
+@if (ViewData.ContainsKey("Error"))
+{
+    <div class="auth-error">@ViewData["Error"]</div>
+}
+<a class="auth-link" href="/Account/Login">Уже есть аккаунт</a>

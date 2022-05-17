@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Авторизация";
+}
+
+<h1>Авторизация</h1>
+<form method="post">
+    <label><input type="text" class="auth-input" placeholder="Email" name="email" required></label>
+    <label><input type="password" class="auth-input" placeholder="Пароль" name="password"></label>
+    <button class="auth-button">Войти</button>
+</form>
+@if (ViewData.ContainsKey("Error"))
+{
+    <div class="auth-error">@ViewData["Error"]</div>
+}
+<a class="auth-link" href="/Account/Register">У меня нет аккаунта</a>

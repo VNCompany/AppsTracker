@@ -1,0 +1,46 @@
+﻿@inject AppsTracker.Services.AuthorizationService Auth
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <title>@ViewData["Title"] - AppsTracker</title>
+</head>
+<body>
+    <header>
+        <div class="site-name"><a href="#">AppsTracker</a></div>
+        <nav role="navigation">
+            <div class="nav-bar">
+                <ul>
+                    <li><a href="/Home/Index">На главную</a></li>
+                    @if (Auth.IsAuthenticated)
+                    {
+                        <li><a href="#">Список приложений</a></li>
+                        <li><a href="#">Добавить приложение</a></li>
+                    }
+                </ul>
+            </div>
+            <div class="nav-bar-user">
+                <ul>
+                    @if (Auth.IsAuthenticated)
+                    {
+                        <li>@Auth.User?.Email</li>
+                        <li><a href="/Account/Logout">Выйти</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Account/Login">Авторизация</a></li>
+                        <li><a href="/Account/Register">Регистрация</a></li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+</body>
+</html>

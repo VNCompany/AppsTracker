@@ -3,7 +3,7 @@ using System.Text;
 
 namespace DataLayer
 {
-    public partial class Database
+    public partial class DatabaseService
     {
         public static string HashPassword(string pw)
         {
@@ -18,6 +18,6 @@ namespace DataLayer
             return sb.ToString();
         }
 
-        public string AntiSqlInjection(string input) => input.Replace("'", "\\'");
+        public static string AntiSqlInjection(string input) => input.Replace("'", "\\'");
     }
 }

@@ -4,44 +4,30 @@ using DataLayer.Repositories;
 
 namespace DataLayer
 {
-    public partial class Database : IDisposable
+    public partial class DatabaseService : IDisposable
     {
-        static string? connString = null;
-        static bool isInit = false;
-        static string configureTablesSqlPath = "./query.sql";
-        public static void Configure(string host, string user, string password, string dbname, string? csp = null)
-        {
-            connString = $"Host={host};Username={user};Password={password};Database={dbname}";
+        static bool isInitialized = false;
 
-            if (csp != null)
-                configureTablesSqlPath = csp;
-        }
-
-        NpgsqlConnection _conn;
-        public Database()
+        NpgsqlConnection connection;
+        public DatabaseService(string host, string user, string password, string dbname, string queryFile = "./query.sql")
         {
-            if (connString != null)
+            connection = new NpgsqlConnection($"Host={host};Username={user};Password={password};Database={dbname}");
+            connection.Open();
+            if (!isInitialized)
             {
-                _conn = new NpgsqlConnection(connString);
-                _conn.Open();
-                if (!isInit)
+                isInitialized = true;
+                using (NpgsqlCommand cmd = new NpgsqlCommand() { Connection = connection })
                 {
-                    isInit = true;
-                    using (NpgsqlCommand cmd = new NpgsqlCommand())
-                    {
-                        cmd.Connection = _conn;
-                        cmd.CommandText = File.ReadAllText(configureTablesSqlPath);
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.CommandText = File.ReadAllText(queryFile);
+                    cmd.ExecuteNonQuery();
                 }
             }
-            else
-                throw new InvalidOperationException("Database not configured");
+            Console.WriteLine("DatabaseService is created");
         }
 
         public int Execute(string query)
         {
-            using (NpgsqlCommand cmd = new NpgsqlCommand(query, _conn))
+            using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
                 return cmd.ExecuteNonQuery();
             }
@@ -49,12 +35,12 @@ namespace DataLayer
 
         public NpgsqlCommand ExecuteCommand(string query)
         {
-            return new NpgsqlCommand(query, _conn);
+            return new NpgsqlCommand(query, connection);
         }
 
         public object? ExecuteScalar(string query)
         {
-            using (NpgsqlCommand cmd = new NpgsqlCommand(query, _conn))
+            using (NpgsqlCommand cmd = new NpgsqlCommand(query, connection))
             {
                 return cmd.ExecuteScalar();
             }
@@ -73,7 +59,8 @@ namespace DataLayer
 
         public void Dispose()
         {
-            _conn.Dispose();
+            Console.WriteLine("DatabaseService is disposed");
+            connection.Dispose();
         }
     }
 }

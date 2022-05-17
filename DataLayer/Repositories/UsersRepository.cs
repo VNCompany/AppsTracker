@@ -5,9 +5,9 @@ namespace DataLayer.Repositories
 {
     public class UsersRepository
     {
-        Database parent;
+        DatabaseService parent;
 
-        internal UsersRepository(Database parent)
+        internal UsersRepository(DatabaseService parent)
         {
             this.parent = parent;
         }
