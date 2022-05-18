@@ -51,6 +51,80 @@ main {
     margin: 25px 0;
 }
 
+.error-message {
+    color: red;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.newapp {
+    margin: 30px;
+}
+
+.newapp label, .newapp input {
+    font-size: 14pt;
+    margin: 5px;
+}
+
+.newapp input {
+    border: 1px solid dimgray;
+    border-radius: 3px;
+    padding: 5px 8px;
+}
+
+/*  Apps Table Styles  */
+
+.apps-container {
+    margin: 20px 50px;
+}
+
+.apps-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    font-size: 12pt;
+}
+
+.apps-table th {
+    background: lightgray;
+    font-weight: normal;
+    border-right: 2px solid white;
+}
+
+.apps-table th, .apps-table td {
+    padding: 20px 10px;
+}
+
+.apps-table td {
+    border-bottom: 1px solid lightgray;
+    color: gray;
+}
+
+.apps-table tr:hover > td {
+    background: #eee;
+}
+
+.apps-table tr > td:last-child {
+    text-align: center;
+}
+
+.apps-table a {
+    color: #0088ff;
+    text-decoration: none;
+}
+.apps-table a:visited { color: #0088ff; }
+
+.apps-table .app-link {
+    color: #34495e;
+    font-weight: bold;
+}
+
+.apps-table .app-link:visited {
+    color: #34495e;
+}
+
+/*  <<< Apps Table Styles  */
+
 @media screen and (max-width: 900px) {
     .site-name {
         margin: 0;
@@ -66,5 +140,10 @@ main {
         display: block;
         margin: 5px 0;
         text-align: center;
+    }
+
+    .newapp input {
+        display: block;
+        margin-top: 10px;
     }
 }

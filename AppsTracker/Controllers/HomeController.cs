@@ -19,6 +19,16 @@ namespace AppsTracker
         public IActionResult Index()
         {
             auth.Authenticate(HttpContext.Request.Cookies);
+
+            if (auth.IsAuthenticated)
+            {
+                ViewData["Message"] = $"Количество добавленных приложений: {db.Apps.Count(auth.User!.Id)}";
+            }
+            else
+            {
+                ViewData["Message"] = "Войдите или зарегистрируйтесь, чтобы посмотреть список приложений.";
+            }
+
             return View();
         }
     }

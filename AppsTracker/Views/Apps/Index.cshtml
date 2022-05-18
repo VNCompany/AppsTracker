@@ -1,0 +1,25 @@
+﻿@using DataLayer.Models
+@{
+    ViewData["Title"] = "Приложения";
+}
+@model IEnumerable<App>
+
+<div class="apps-container">
+    <h2>Ваши приложения:</h2>
+    <table class="apps-table">
+        <tr>
+            <th style="width: 50px">ID</th>
+            <th>Название</th>
+            <th style="width: 150px">Дата создания</th>
+        </tr>
+
+        @foreach (var app in @Model)
+        {
+            <tr>
+                <td><a href="/Apps/Statistic/@app.Id">@app.Id</a></td>
+                <td><a href="/Apps/Statistic/@app.Id" class="app-link">@app.Name</a></td>
+                <td>@app.Date.ToString("dd.MM.yyyy")</td>
+            </tr>
+        }
+    </table>
+</div>
