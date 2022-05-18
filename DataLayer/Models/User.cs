@@ -7,7 +7,6 @@
         public string? Password { get; set; }
 
         public User() { }
-
         public User (int id, string email, string password)
         {
             Id = id;

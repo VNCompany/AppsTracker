@@ -57,6 +57,17 @@ namespace DataLayer
             }
         }
 
+        AppsRepository? apps;
+        public AppsRepository Apps
+        {
+            get
+            {
+                if (apps == null)
+                    apps = new AppsRepository(this);
+                return apps;
+            }
+        }
+
         public void Dispose()
         {
             Console.WriteLine("DatabaseService is disposed");
