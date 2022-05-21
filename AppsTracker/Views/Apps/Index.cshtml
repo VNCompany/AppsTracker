@@ -16,8 +16,8 @@
         @foreach (var app in @Model)
         {
             <tr>
-                <td><a href="/Apps/Statistic/@app.Id">@app.Id</a></td>
-                <td><a href="/Apps/Statistic/@app.Id" class="app-link">@app.Name</a></td>
+                <td><a href="/Apps/Statistics/@app.Id">@app.Id</a></td>
+                <td><a href="/Apps/Statistics/@app.Id" class="app-link">@app.Name</a></td>
                 <td>@app.Date.ToString("dd.MM.yyyy")</td>
             </tr>
         }

@@ -2,7 +2,7 @@
 
 using AppsTracker.Services;
 
-namespace AppsTracker
+namespace AppsTracker.Controllers
 {
     public class AccountController : Controller
     {

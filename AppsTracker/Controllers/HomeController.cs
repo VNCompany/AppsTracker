@@ -4,7 +4,7 @@ using DataLayer;
 using DataLayer.Models;
 using AppsTracker.Services;
 
-namespace AppsTracker
+namespace AppsTracker.Controllers
 {
     public class HomeController : Controller
     {

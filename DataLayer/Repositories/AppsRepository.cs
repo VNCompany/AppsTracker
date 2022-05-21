@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using NpgsqlTypes;
 using System.Collections.Generic;
 
 using DataLayer.Models;
@@ -57,6 +58,20 @@ namespace DataLayer.Repositories
                 command.Prepare();
 
                 return command.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public bool NewEvent(AppEvent appEvent)
+        {
+            using (NpgsqlCommand command = parent.ExecuteCommand("SELECT u_event_new (@appId, @name, @description, @date)"))
+            {
+                command.Parameters.AddWithValue("appId", NpgsqlDbType.Integer, appEvent.AppId!);
+                command.Parameters.AddWithValue("name", appEvent.Name!);
+                command.Parameters.AddWithValue("description", appEvent.Description!);
+                command.Parameters.AddWithValue("date", appEvent.Date!);
+                command.Prepare();
+
+                return (bool)command.ExecuteScalar()!;
             }
         }
     }
