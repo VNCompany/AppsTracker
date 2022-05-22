@@ -1,3 +1,15 @@
-﻿@{
+﻿@using DataLayer.ViewModels;
+@model AppEventsViewModel
+
+@{
     ViewData["Title"] = "Статистика";
 }
+
+<p>Count: @Model.Count</p>
+
+<ul>
+    @foreach (var group in @Model.EventGroups)
+    {
+        <li>@group.Name - @group.Count</li>
+    }
+</ul>

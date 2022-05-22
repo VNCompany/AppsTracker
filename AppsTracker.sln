@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppsTracker", "AppsTracker\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{86696DE2-FF3C-4DFE-A526-2281295D217A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{CCC9E675-03C2-48D9-88F7-F38A93D5D12C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{86696DE2-FF3C-4DFE-A526-2281295D217A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86696DE2-FF3C-4DFE-A526-2281295D217A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86696DE2-FF3C-4DFE-A526-2281295D217A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CCC9E675-03C2-48D9-88F7-F38A93D5D12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCC9E675-03C2-48D9-88F7-F38A93D5D12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCC9E675-03C2-48D9-88F7-F38A93D5D12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCC9E675-03C2-48D9-88F7-F38A93D5D12C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

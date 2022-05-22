@@ -170,9 +170,17 @@ main {
 
 .chart-container {
     margin-left: 30px;
-    /* border: 1px dashed red; */
-    height: 600px;
     flex-grow: 1;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+#diagramChart {
+    width: 100% !important;
+}
+
+.statistics-container > p {
+    margin: 15px;
 }
 
 /*  <<< App Statistics Styles  */
@@ -206,6 +214,18 @@ main {
 
     .toggle-box {
         margin-bottom: 30px;
+    }
+
+    .chart-container {
+        margin-left: 0;
+    }
+
+    #diagramChart {
+        margin: 0 auto;
+    }
+
+    .statistics-container > p {
+        text-align: center;
     }
     /*  <<< App Statistics Styles  */
 }

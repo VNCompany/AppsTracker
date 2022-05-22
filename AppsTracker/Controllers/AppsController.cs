@@ -2,6 +2,7 @@
 
 using DataLayer;
 using DataLayer.Models;
+using DataLayer.ViewModels;
 using AppsTracker.Services;
 
 namespace AppsTracker.Controllers
@@ -50,6 +51,26 @@ namespace AppsTracker.Controllers
                 return StatusCode(403);
 
             return View(db.Apps.GetList(auth.User!.Id));
+        }
+        
+        public IActionResult Statistics(int id)
+        {
+            if (!auth.Authenticate(Request.Cookies))
+                return StatusCode(403);
+
+            var period = DataLayer.Repositories.AppStatisticsPeriod.Day;
+            if (Request.Query.TryGetValue("period", out var sPeriod)
+                && int.TryParse(sPeriod, out int iPeriod)
+                && iPeriod >= 1 && iPeriod <= 3)
+                period = (DataLayer.Repositories.AppStatisticsPeriod)iPeriod;
+
+            AppEventsViewModel? vm = db.Apps.GetStatistics(auth.User!.Id, id, period);
+
+            if (vm != null)
+            {
+                return View(vm);
+            }
+            else return StatusCode(404);
         }
     }
 }

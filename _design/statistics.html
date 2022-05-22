@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles.css">
+    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.js"></script>
     <title>Статистика - AppsTracker</title>
 </head>
 <body>
@@ -42,10 +43,45 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <img width="100%" src="https://i.stack.imgur.com/nSl3V.png">
+                    <!-- <canvas width="600" height="600" id="diagramChart"></canvas> -->
+                    <p>Не найдено событий за указанный промежуток времени.</p>
                 </div>
             </div>
+            <p>Общее число событий: <b>1232</b></p>
         </div>
     </main>
+
+    <script>
+        const ctx = document.getElementById('diagramChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [/*'Update', 'Create', 'Delete', "#4", "#5", "#6", "#7", "#8", "#9"*/],
+                datasets: [{
+                    data: [/*15, 16, 345, 50, 60, 70, 5, 65, 45*/],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+    </script>
 </body>
 </html>
