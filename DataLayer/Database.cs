@@ -22,7 +22,6 @@ namespace DataLayer
                     cmd.ExecuteNonQuery();
                 }
             }
-            Console.WriteLine("DatabaseService is created");
         }
 
         public int Execute(string query)
@@ -70,7 +69,6 @@ namespace DataLayer
 
         public void Dispose()
         {
-            Console.WriteLine("DatabaseService is disposed");
             connection.Dispose();
         }
     }

@@ -125,6 +125,66 @@ main {
 
 /*  <<< Apps Table Styles  */
 
+/*  App Statistics Styles  */
+
+.statistics-container {
+    max-width: 1000px;
+    margin: 25px auto;
+    box-shadow: 1px 1px 5px dimgray;
+    padding: 15px;
+}
+
+.statistics-wrapper {
+    display: flex;
+}
+
+.statistics-title {
+    color: #333;
+    text-align: center;
+    margin: 0 0 50px 0;
+}
+
+.toggle-box {
+    box-sizing: border-box;
+    align-self: baseline;
+    padding: 10px 0 20px 0;
+}
+
+.toggle-buttons > a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    min-width: 200px;
+}
+.toggle-buttons > a:visited {
+    color: #333;
+}
+.toggle-buttons > a:hover {
+    background: linear-gradient(90deg, lightgray 70%, transparent);
+}
+.toggle-buttons > .selected {
+    background: linear-gradient(90deg, lightgray 70%, transparent);;
+}
+
+.chart-container {
+    margin-left: 30px;
+    flex-grow: 1;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+#diagramChart {
+    width: 100% !important;
+}
+
+.statistics-container > p {
+    margin: 15px;
+}
+
+/*  <<< App Statistics Styles  */
+
 @media screen and (max-width: 900px) {
     .site-name {
         margin: 0;
@@ -146,4 +206,26 @@ main {
         display: block;
         margin-top: 10px;
     }
+
+    /*  App Statistics Styles  */
+    .statistics-wrapper {
+        display: block;
+    }
+
+    .toggle-box {
+        margin-bottom: 30px;
+    }
+
+    .chart-container {
+        margin-left: 0;
+    }
+
+    #diagramChart {
+        margin: 0 auto;
+    }
+
+    .statistics-container > p {
+        text-align: center;
+    }
+    /*  <<< App Statistics Styles  */
 }

@@ -1,15 +1,59 @@
 ﻿@using DataLayer.ViewModels;
 @model AppEventsViewModel
 
-@{
-    ViewData["Title"] = "Статистика";
-}
+<main role="main">
+    <script type="application/javascript">
+        let chartInfo = {
+            labels: @Html.Raw(Json.Serialize(Model.EventGroups.Select(e => e.Name))),
+            values: @Html.Raw(Json.Serialize(Model.EventGroups.Select(e => e.Count)))
+        };
+    </script>
 
-<p>Count: @Model.Count</p>
+    <div class="statistics-container">
+        <h2 class="statistics-title">Статистика</h2>
+        <div class="statistics-wrapper">
+            <div class="toggle-box">
+                <div class="toggle-buttons">
+                    @switch ((int)ViewData["Period"]!)
+                    {
+                        case 1:
+                            <a href="#" class="selected">День</a>
+                            <a href="?period=2">Месяц</a>
+                            <a href="?period=3">Год</a>
+                            break;
+                        case 2:
+                            <a href="?period=1">День</a>
+                            <a href="#" class="selected">Месяц</a>
+                            <a href="?period=3">Год</a>
+                            break;
+                        case 3:
+                            <a href="?period=1">День</a>
+                            <a href="?period=2">Месяц</a>
+                            <a href="#" class="selected">Год</a>
+                            break;
+                    }
+                </div>
+            </div>
+            <div class="chart-container">
+                @if (@Model.Count > 0)
+                {
+                    <canvas width="600" height="600" id="diagramChart"></canvas>
+                }
+                else 
+                {
+                    <p>Не найдено событий за указанный промежуток времени.</p>
+                }
+            </div>
+        </div>
+        <p>Общее число событий: <b>@Model.GroupsCount</b></p>
+    </div>
+</main>
 
-<ul>
-    @foreach (var group in @Model.EventGroups)
+
+@section Scripts {
+    @if (@Model.Count > 0)
     {
-        <li>@group.Name - @group.Count</li>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.js"></script>
+        <script type="text/javascript" src="~/js/chart.js"></script>
     }
-</ul>
+}

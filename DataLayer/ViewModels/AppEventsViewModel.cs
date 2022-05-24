@@ -6,7 +6,9 @@ namespace DataLayer.ViewModels
     {
         List<AppEventsGroup> eventGroups;
 
-        public int Count => eventGroups.Sum(e => e.Count);
+        public int GroupsCount => eventGroups.Sum(e => e.Count);
+
+        public int Count => eventGroups.Count;
 
         public IEnumerable<AppEventsGroup> EventGroups => eventGroups;
 

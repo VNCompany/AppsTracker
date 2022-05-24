@@ -32,6 +32,13 @@
     </header>
 
     <main role="main">
+        <script type="application/javascript">
+            let chartInfo = {
+                labels: ["Var1", "Var2", "Var3"],
+                values: [13, 56, 128]
+            };
+        </script>
+
         <div class="statistics-container">
             <h2 class="statistics-title">Статистика</h2>
             <div class="statistics-wrapper">
@@ -43,8 +50,8 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <!-- <canvas width="600" height="600" id="diagramChart"></canvas> -->
-                    <p>Не найдено событий за указанный промежуток времени.</p>
+                    <canvas width="600" height="600" id="diagramChart"></canvas>
+                    <!-- <p>Не найдено событий за указанный промежуток времени.</p> -->
                 </div>
             </div>
             <p>Общее число событий: <b>1232</b></p>
@@ -56,9 +63,9 @@
         const myChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: [/*'Update', 'Create', 'Delete', "#4", "#5", "#6", "#7", "#8", "#9"*/],
+                labels: chartInfo.labels,
                 datasets: [{
-                    data: [/*15, 16, 345, 50, 60, 70, 5, 65, 45*/],
+                    data: chartInfo.values,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

@@ -17,7 +17,6 @@ namespace AppsTracker.Services
         public AuthorizationService(DatabaseService databaseService)
         {
             db = databaseService;
-            Console.WriteLine("AuthorizationService is created");
         }
 
         public bool Authenticate(IRequestCookieCollection cookies)
@@ -70,9 +69,6 @@ namespace AppsTracker.Services
             return false;
         }
 
-        public void Dispose()
-        {
-            Console.WriteLine("AuthorizationService is disposed");
-        }
+        public void Dispose() { }
     }
 }

@@ -123,5 +123,21 @@ namespace DataLayer.Repositories
 
             return null;
         }
+
+        public App? this[int appId]
+        {
+            get
+            {
+                using (var command = parent.ExecuteCommand($"SELECT * FROM apps WHERE id = {appId} LIMIT 1"))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                            return _Map(reader);
+                    }
+                }
+                return null;
+            }
+        }
     }
 }

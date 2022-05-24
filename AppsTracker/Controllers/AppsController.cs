@@ -68,6 +68,8 @@ namespace AppsTracker.Controllers
 
             if (vm != null)
             {
+                ViewData["Period"] = period;
+                ViewData["Title"] = db.Apps[id]!.Name;
                 return View(vm);
             }
             else return StatusCode(404);
